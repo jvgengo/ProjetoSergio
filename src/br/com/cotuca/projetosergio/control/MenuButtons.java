@@ -1,11 +1,14 @@
 package br.com.cotuca.projetosergio.control;
 
 import org.cocos2d.layers.CCLayer;
+import org.cocos2d.nodes.CCDirector;
+import org.cocos2d.transitions.CCFadeTransition;
 import org.cocos2d.types.CGPoint;
 
 import android.util.Log;
 import br.com.cotuca.projetosergio.config.Assets;
 import br.com.cotuca.projetosergio.config.DeviceSettings;
+import br.com.cotuca.projetosergio.scenes.GameScene;
 
 public class MenuButtons extends CCLayer implements ButtonDelegate{
 	private Button playButton;
@@ -17,12 +20,10 @@ public class MenuButtons extends CCLayer implements ButtonDelegate{
 		this.playButton = new Button(Assets.PLAY);
 		this.helpButton = new Button(Assets.HELP);
 		
-		//coloca os botoes nas possicoes corretas
-		
-		this.setButtonsPosition();
 		this.playButton.setDelegate(this);
 		this.helpButton.setDelegate(this);
 		
+		this.setButtonsPosition();
 		
 		this.addChild(playButton);
 		this.addChild(helpButton);
@@ -30,14 +31,16 @@ public class MenuButtons extends CCLayer implements ButtonDelegate{
 
 	private void setButtonsPosition() {
 		
-		playButton.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(DeviceSettings.screenWidth()/2, DeviceSettings.screenHeight()/2)));
+		playButton.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(DeviceSettings.screenWidth()/2 -100, DeviceSettings.screenHeight()-400)));
 		helpButton.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(DeviceSettings.screenWidth()/2, DeviceSettings.screenHeight()/2 - 100)));
 		
 	}
 
 	public void buttonClicked(Button sender) {
 		if (sender.equals(this.playButton)) {
-			Log.i("TESTE BUTTON", "Button clicked:Play");
+			System.out.println("Button clicked: Play");
+
+			CCDirector.sharedDirector().replaceScene(CCFadeTransition.transition(1.0f, GameScene.createGame()));
 		}
 		
 		if (sender.equals(this.helpButton)) {

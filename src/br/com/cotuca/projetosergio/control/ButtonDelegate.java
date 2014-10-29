@@ -1,5 +1,7 @@
 package br.com.cotuca.projetosergio.control;
 
-public class ButtonDelegate {
-
+public interface ButtonDelegate {
+	
+	public void buttonClicked(Button sender);
+	
 }

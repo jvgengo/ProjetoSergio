@@ -1,4 +1,4 @@
-package br.com.cotuca.projetosergio;
+  package br.com.cotuca.projetosergio;
 
 import org.cocos2d.layers.CCScene;
 import org.cocos2d.nodes.CCDirector;

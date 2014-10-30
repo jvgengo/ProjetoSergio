@@ -1,6 +1,7 @@
 package br.com.cotuca.projetosergio.config;
 
 public class Assets {
+	public static String  BOTTLE     = "meteor.png";
 	public static String  BACKGROUND = "background.png";
 	public static String  LOGO 		 = "logo.png";
 	public static String  FINALEND 	 = "finalend.png";

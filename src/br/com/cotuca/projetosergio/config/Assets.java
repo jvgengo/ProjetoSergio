@@ -1,7 +1,8 @@
 package br.com.cotuca.projetosergio.config;
 
 public class Assets {
-	public static String  BOTTLE     = "meteor.png";
+	public static String  BOTTLE     = "bottle.png";
+	public static String  DRUNK       = "drunk.png";
 	public static String  BACKGROUND = "background.png";
 	public static String  LOGO 		 = "logo.png";
 	public static String  FINALEND 	 = "finalend.png";
@@ -13,12 +14,4 @@ public class Assets {
 	public static String  HELP  	 = "help.png";
 	public static String  SOUND      = "sound.png";
 	public static String  EXIT		 = "exit.png";
-
-	public static String  METEOR     = "meteor.png";
-	public static String  NAVE       = "nave.png";
-	public static String  SHOOT      = "shoot.png";
-	
-	public static String LEFTCONTROL  = "left.png";
-	public static String RIGHTCONTROL = "right.png";
-	public static String SHOOTBUTTON  = "shootButton.png";
 }

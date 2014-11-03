@@ -25,4 +25,8 @@ public class Bottle extends CCSprite {
 		//logica de movimentacao da garrafa
 	}
 	
+	public void removeMe() {
+		this.removeFromParentAndCleanup(true);
+	}
+	
 }

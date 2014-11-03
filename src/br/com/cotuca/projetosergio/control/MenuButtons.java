@@ -31,13 +31,14 @@ public class MenuButtons extends CCLayer implements ButtonDelegate{
 
 	private void setButtonsPosition() {
 		
-		playButton.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(DeviceSettings.screenWidth()/2 -100, DeviceSettings.screenHeight()-400)));
-		helpButton.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(DeviceSettings.screenWidth()/2, DeviceSettings.screenHeight()/2 - 100)));
+		playButton.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(DeviceSettings.screenWidth()/2 -160, DeviceSettings.screenHeight()-420)));
+		helpButton.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(DeviceSettings.screenWidth()/2 -160, DeviceSettings.screenHeight()-520)));
 		
 	}
 
 	public void buttonClicked(Button sender) {
 		if (sender.equals(this.playButton)) {
+			Log.i("TESTE BUTTON", "Button clicked: Play");
 			System.out.println("Button clicked: Play");
 
 			CCDirector.sharedDirector().replaceScene(CCFadeTransition.transition(1.0f, GameScene.createGame()));

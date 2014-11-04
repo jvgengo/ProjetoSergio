@@ -13,6 +13,7 @@ import org.cocos2d.nodes.CCSprite;
 import org.cocos2d.sound.SoundEngine;
 import org.cocos2d.types.CGRect;
 
+import android.util.Log;
 import br.com.cotuca.projetosergio.config.Assets;
 import br.com.cotuca.projetosergio.config.DeviceSettings;
 import br.com.cotuca.projetosergio.engines.BottleEngine;

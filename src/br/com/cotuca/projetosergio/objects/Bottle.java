@@ -5,12 +5,12 @@ import java.util.Random;
 import org.cocos2d.nodes.CCSprite;
 import org.cocos2d.types.CGPoint;
 
-import android.view.animation.RotateAnimation;
 import br.com.cotuca.projetosergio.config.DeviceSettings;
 
 public class Bottle extends CCSprite {
 	
 	private float x,y;
+	private int rotacao = 0;
 	
 	public Bottle(String image) {
 		super(image);
@@ -25,8 +25,9 @@ public class Bottle extends CCSprite {
 	}
 	
 	public void update(float dt) {
-		y -= 1;
-		this.setRotation(90);
+		y -= 5;
+		this.setRotation(rotacao);
+		rotacao += 5;
 		this.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(x, y)));
 	}
 	

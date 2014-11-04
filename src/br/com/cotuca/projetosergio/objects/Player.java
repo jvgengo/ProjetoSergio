@@ -19,8 +19,8 @@ import br.com.cotuca.projetosergio.interfaces.BottleEngineDelegate;
 
 public class Player extends CCSprite implements AccelerometerDelegate {
 
-	float positionX = 50;
-	float positionY = 100;
+	float positionX = DeviceSettings.screenWidth()/2;
+	float positionY = DeviceSettings.screenHeight()/2;
 	
 	private BottleEngineDelegate delegate;
 	

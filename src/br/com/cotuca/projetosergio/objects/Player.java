@@ -19,10 +19,13 @@ import br.com.cotuca.projetosergio.interfaces.BottleEngineDelegate;
 
 public class Player extends CCSprite implements AccelerometerDelegate {
 
-	float positionX = DeviceSettings.screenWidth()/2;
-	float positionY = DeviceSettings.screenHeight()/2;
+	public float positionX = DeviceSettings.screenWidth()/2;
+	public float positionY = DeviceSettings.screenHeight()/2;
 	
 	private BottleEngineDelegate delegate;
+	
+	public static final int RAIO = 20; 
+	
 	
 	private Acelerometro accelerometer;
 
@@ -54,7 +57,21 @@ public class Player extends CCSprite implements AccelerometerDelegate {
 		}
 		setPosition(positionX, positionY);
 	}
+	
+	public void moveUp() {
+		if (positionY > 30) {
+			positionY += 10;
+		}
+		setPosition(positionX, positionY);
+	}
 
+	public void moveDown() {
+		if (positionY < DeviceSettings.screenHeight() - 30) {
+			positionY -= 10;
+		}
+		setPosition(positionX, positionY);
+	}
+	
 	public void explode() {
 
 		// Stop Shoot

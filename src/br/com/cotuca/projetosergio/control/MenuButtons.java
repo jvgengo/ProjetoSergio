@@ -12,27 +12,27 @@ import br.com.cotuca.projetosergio.scenes.GameScene;
 
 public class MenuButtons extends CCLayer implements ButtonDelegate{
 	private Button playButton;
-	private Button helpButton;
+	//private Button helpButton;
 	
 	public MenuButtons(){
 		this.setIsTouchEnabled(true);
 		
 		this.playButton = new Button(Assets.PLAY);
-		this.helpButton = new Button(Assets.HELP);
+		//this.helpButton = new Button(Assets.HELP);
 		
 		this.playButton.setDelegate(this);
-		this.helpButton.setDelegate(this);
+		//this.helpButton.setDelegate(this);
 		
 		this.setButtonsPosition();
 		
 		this.addChild(playButton);
-		this.addChild(helpButton);
+		//this.addChild(helpButton);
 	}
 
 	private void setButtonsPosition() {
 		
-		playButton.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(DeviceSettings.screenWidth()/2 -160, DeviceSettings.screenHeight()-420)));
-		helpButton.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(DeviceSettings.screenWidth()/2 -160, DeviceSettings.screenHeight()-520)));
+		playButton.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(DeviceSettings.screenWidth()/2 -80, DeviceSettings.screenHeight()-450)));
+		//helpButton.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(DeviceSettings.screenWidth()/2 -160, DeviceSettings.screenHeight()-520)));
 		
 	}
 
@@ -44,8 +44,8 @@ public class MenuButtons extends CCLayer implements ButtonDelegate{
 			CCDirector.sharedDirector().replaceScene(CCFadeTransition.transition(1.0f, GameScene.createGame()));
 		}
 		
-		if (sender.equals(this.helpButton)) {
-			Log.i("TESTE BUTTON", "Button clicked:Help");
-		}
+		//if (sender.equals(this.helpButton)) {
+		//	Log.i("TESTE BUTTON", "Button clicked:Help");
+		//}
 	}
 }

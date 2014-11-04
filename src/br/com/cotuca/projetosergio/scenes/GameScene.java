@@ -31,7 +31,7 @@ public class GameScene extends CCLayer implements BottleEngineDelegate{
 	private Player player;
 	
 	public GameScene() {
-		this.background = new ScreenBackground(Assets.BG_INICIO);
+		this.background = new ScreenBackground(Assets.BG_GAME);
 		this.background.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(
 				DeviceSettings.screenWidth() / 2.0f, 
 				DeviceSettings.screenHeight() / 2.0f)));

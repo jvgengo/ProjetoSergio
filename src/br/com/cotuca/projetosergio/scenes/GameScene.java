@@ -17,6 +17,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.cocos2d.events.CCTouchDispatcher;
 import org.cocos2d.layers.CCLayer;
 import org.cocos2d.layers.CCScene;
 import org.cocos2d.nodes.CCDirector;
@@ -37,8 +38,7 @@ import br.com.cotuca.projetosergio.objects.Bottle;
 import br.com.cotuca.projetosergio.objects.Player;
 import br.com.cotuca.projetosergio.screens.ScreenBackground;
 
-public class GameScene extends CCLayer implements BottleEngineDelegate,
-		OnTouchListener {
+public class GameScene extends CCLayer implements BottleEngineDelegate {
 
 	private ScreenBackground background;
 	private BottleEngine bottleEngine;
@@ -129,24 +129,6 @@ public class GameScene extends CCLayer implements BottleEngineDelegate,
 		return glRect;
 	}
 
-	private boolean checkRadiusHitsOfArray(List<? extends CGRect> array1,
-			List<? extends CCSprite> array2, GameScene gameScene, String hit) {
-		boolean result = false;
-
-		for (int i = 0; i < array1.size(); i++) {
-			CGRect rect1 = array1.get(i);
-
-			for (int j = 0; j < array2.size(); j++) {
-				CGRect rect2 = getBoarders(array2.get(j));
-
-				if (CGRect.intersects(rect1, rect2)) {
-					result = true;
-				}
-			}
-		}
-		return result;
-	}
-
 	private boolean checkRadiusHitsOfArraySprite(
 			List<? extends CCSprite> array1, List<? extends CCSprite> array2,
 			GameScene gameScene, String hit) {
@@ -178,12 +160,6 @@ public class GameScene extends CCLayer implements BottleEngineDelegate,
 	public void checkHits(float dt) {
 		// this.checkRadiusHitsOfArray(array1, array2, this, "bottlehit");
 
-		try {
-			Thread.sleep(100);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		this.checkRadiusHitsOfArraySprite(bottlesArray, playersArray, this,
 				"playerHit");
 	}
@@ -192,19 +168,32 @@ public class GameScene extends CCLayer implements BottleEngineDelegate,
 	public void removeBottle(Bottle bottle) {
 		this.bottlesArray.remove(this);
 	}
+	
+	@Override
+	protected void registerWithTouchDispatcher() {
+		CCTouchDispatcher.sharedDispatcher().addTargetedDelegate(this, 0, false);
+	}
 
 	@Override
-	public boolean onTouch(View v, MotionEvent event) {
-
+	public boolean ccTouchesBegan(MotionEvent event) {
 		final int pointerCount = event.getPointerCount();
 
 		for (int p = 0; p < pointerCount; p++) {
-			CGRect rect = CGRect.make(event.getX(p), event.getY(p), 10, 10);
-			List array = new ArrayList();
-			array.add(rect);
-			checkRadiusHitsOfArray(array, bottlesArray, this, "bottleHit");
-		}
+			CGPoint touchLocation = CGPoint.make(event.getX(p), event.getY(p));
+			touchLocation = CCDirector.sharedDirector().convertToGL(touchLocation);
+			touchLocation = this.convertToNodeSpace(touchLocation);
 
+			for (int i = 0; i < bottlesArray.size(); i++) {
+				Bottle b = (Bottle) bottlesArray.get(i);
+				CGRect boudingBox = b.getBoundingBox();
+				boudingBox.set(boudingBox.origin.x, boudingBox.origin.y,
+						CGRect.width(boudingBox) + 30,
+						CGRect.height(boudingBox) + 30);
+				if (CGRect.containsPoint(boudingBox, touchLocation)) {
+					b.shooted();
+				}
+			}
+		}
 		return true;
 	}
 

@@ -1,8 +1,7 @@
 package br.com.cotuca.projetosergio.config;
 
 public class Assets {
-	public static String  BOTTLE     = "garrafa1.png";
-	public static String  BOTTLE_2     = "garrafa2.png";
+	public static String  BOTTLE     = "garrafa2.png";
 	public static String  DRUNK       = "drunk.png";
 	public static String  BG_INICIO = "bg_menu.png";
 	public static String  BG_GAME = "bg_game.png";

@@ -17,7 +17,7 @@ public class BottleEngine extends CCLayer {
 	}
 	
 	public void bottleEngine(float dt) {
-		if (new Random().nextInt(10) == 0) {
+		if (new Random().nextInt(15) == 0) {
 			this.getDelegate().createBottle(new Bottle(Assets.BOTTLE));
 		}
 	}

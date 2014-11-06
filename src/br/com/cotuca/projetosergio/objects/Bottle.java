@@ -20,16 +20,36 @@ public class Bottle extends CCSprite {
 
 	private float x, y;
 	private int rotacao = 0;
+	private int lado;
 	
 	private BottleEngineDelegate delegate;
 
 	public Bottle(String image) {
 		super(image);
-
-		// y = DeviceSettings.screenHeight();
-		x = new Random().nextInt(Math.round(DeviceSettings.screenWidth() - 30));
-		y = new Random().nextInt(Math.round(DeviceSettings.screenHeight()- 30));
-
+		
+		int key = new Random().nextInt(3);
+		lado = key;
+		
+		switch (key) {
+		case 0:
+			x = new Random().nextInt(Math.round(DeviceSettings.screenWidth() - 30));
+			y = DeviceSettings.screenHeight();
+			break;
+		case 1:
+			x = new Random().nextInt(Math.round(DeviceSettings.screenWidth() - 30));
+			y = 0;
+			break;
+		case 2:
+			y = new Random().nextInt(Math.round(DeviceSettings.screenHeight() - 30));
+			x= 0;
+			break;
+		case 3:
+			y = new Random().nextInt(Math.round(DeviceSettings.screenHeight() - 30));
+			x = DeviceSettings.screenWidth();
+			break;
+		default:
+			break;
+		}
 	}
 
 	public void start() {
@@ -37,9 +57,26 @@ public class Bottle extends CCSprite {
 	}
 
 	public void update(float dt) {
-		y -= 5;
+		
+		switch (lado) {
+		case 0:
+			y -= 1;
+			break;
+		case 1:
+			y+=1;
+			break;
+		case 2:
+			x+=1;
+			break;
+		case 3:
+			x-=1;
+			break;
+		default:
+			break;
+		}
+		
 		this.setRotation(rotacao);
-		rotacao += 5;
+		rotacao += 1;
 		this.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(x, y)));
 	}
 

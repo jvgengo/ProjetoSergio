@@ -29,7 +29,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import br.com.cotuca.projetosergio.TouchManager.Toque;
 import br.com.cotuca.projetosergio.config.Assets;
 import br.com.cotuca.projetosergio.config.DeviceSettings;
 import br.com.cotuca.projetosergio.engines.BottleEngine;

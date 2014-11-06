@@ -7,6 +7,7 @@ import org.cocos2d.actions.interval.CCSpawn;
 import org.cocos2d.nodes.CCSprite;
 import org.cocos2d.types.CGPoint;
 
+import android.util.Log;
 import br.com.cotuca.projetosergio.calibrate.AccelerometerDelegate;
 import br.com.cotuca.projetosergio.calibrate.Acelerometro;
 import br.com.cotuca.projetosergio.config.Assets;
@@ -85,8 +86,9 @@ public class Player extends CCSprite implements AccelerometerDelegate {
 
 		// Run actions!
 		this.runAction(CCSequence.actions(s1));
-
-		--life;
+		Log.d("VIDA", life+"");
+		
+		//life -= 1;
 		
 	}
 

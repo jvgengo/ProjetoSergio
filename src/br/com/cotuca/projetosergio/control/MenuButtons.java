@@ -7,7 +7,6 @@ import org.cocos2d.types.CGPoint;
 import android.util.Log;
 import br.com.cotuca.projetosergio.config.Assets;
 import br.com.cotuca.projetosergio.config.DeviceSettings;
-import br.com.cotuca.projetosergio.scenes.FinalScreen;
 
 public class MenuButtons extends CCLayer implements ButtonDelegate{
 	private Button playButton;

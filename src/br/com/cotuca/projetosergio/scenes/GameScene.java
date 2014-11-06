@@ -102,14 +102,6 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 		this.bottleEngine.setDelegate(this);
 	}
 
-	public void moveLeft() {
-		player.moveLeft();
-	}
-
-	public void moveRight() {
-		player.moveRight();
-	}
-
 	public void playerHit(CCSprite bottle, CCSprite player) {
 		((Bottle) bottle).shooted();
 		((Player) player).explode();
@@ -130,9 +122,7 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 		return glRect;
 	}
 
-	private boolean checkRadiusHitsOfArraySprite(
-			List<? extends CCSprite> array1, List<? extends CCSprite> array2,
-			GameScene gameScene, String hit) {
+	private boolean checkRadiusHitsOfArraySprite(List<? extends CCSprite> array1, List<? extends CCSprite> array2,GameScene gameScene, String hit) {
 		boolean result = false;
 
 		for (int i = 0; i < array1.size(); i++) {
@@ -141,7 +131,6 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 				CGRect rect2 = getBoarders(array2.get(j));
 
 				if (CGRect.intersects(rect1, rect2)) {
-					Log.d("Colisao", hit);
 					result = true;
 
 					Method method;
@@ -159,15 +148,12 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 	}
 
 	public void checkHits(float dt) {
-		// this.checkRadiusHitsOfArray(array1, array2, this, "bottlehit");
-
-		this.checkRadiusHitsOfArraySprite(bottlesArray, playersArray, this,
-				"playerHit");
+		this.checkRadiusHitsOfArraySprite(bottlesArray, playersArray, this,"playerHit");
 	}
 
 	@Override
 	public void removeBottle(Bottle bottle) {
-		this.bottlesArray.remove(this);
+		this.bottlesArray.remove(bottle);
 	}
 	
 	@Override
@@ -178,22 +164,25 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 	@Override
 	public boolean ccTouchesBegan(MotionEvent event) {
 		final int pointerCount = event.getPointerCount();
-
+		List remove = new ArrayList();
 		for (int p = 0; p < pointerCount; p++) {
 			CGPoint touchLocation = CGPoint.make(event.getX(p), event.getY(p));
 			touchLocation = CCDirector.sharedDirector().convertToGL(touchLocation);
 			touchLocation = this.convertToNodeSpace(touchLocation);
-
-			for (int i = 0; i < bottlesArray.size(); i++) {
+			
+			int size = bottlesArray.size();
+			for (int i = 0; i < size; i++) {
 				Bottle b = (Bottle) bottlesArray.get(i);
 				CGRect boudingBox = b.getBoundingBox();
-				boudingBox.set(boudingBox.origin.x, boudingBox.origin.y,
-						CGRect.width(boudingBox) + 30,
-						CGRect.height(boudingBox) + 30);
+				boudingBox.set(boudingBox.origin.x, boudingBox.origin.y,CGRect.width(boudingBox) + 30,CGRect.height(boudingBox) + 30);
 				if (CGRect.containsPoint(boudingBox, touchLocation)) {
-					b.shooted();
+					remove.add(b);
 				}
 			}
+		}
+		for (int i = 0; i < remove.size(); i++) {
+			Bottle b = (Bottle) remove.get(i);
+			b.shooted();
 		}
 		return true;
 	}

@@ -22,8 +22,6 @@ public class Player extends CCSprite implements AccelerometerDelegate {
 	
 	private BottleEngineDelegate delegate;
 	
-	public static final int RAIO = 20; 
-	
 	
 	private Acelerometro accelerometer;
 
@@ -47,28 +45,28 @@ public class Player extends CCSprite implements AccelerometerDelegate {
 
 	public void moveLeft() {
 		if (positionX > 30) {
-			positionX -= 100;
+			positionX -= 10;
 		}
 		setPosition(positionX, positionY);
 	}
 
 	public void moveRight() {
 		if (positionX < 50) {
-			positionX += 100;
+			positionX += 10;
 		}
 		setPosition(positionX, positionY);
 	}
 	
 	public void moveUp() {
 		if (positionY > 30) {
-			positionY += 100;
+			positionY += 10;
 		}
 		setPosition(positionX, positionY);
 	}
 
 	public void moveDown() {
 		if (positionY < DeviceSettings.screenHeight() - 30) {
-			positionY -= 100;
+			positionY -= 10;
 		}
 		setPosition(positionX, positionY);
 	}
@@ -112,20 +110,20 @@ public class Player extends CCSprite implements AccelerometerDelegate {
 	public void update(float dt) {
 
 			//fazer primeiro com tudo zero depois colocar essa constant
-			if(this.currentAccelX< -NOISE){
-				this.positionX+=3;
+			if(this.currentAccelX< -NOISE && DeviceSettings.screenWidth() - 50> this.positionX){
+				this.positionX+=2;
 			}
 			
-			if(this.currentAccelX> NOISE){
-				this.positionX -=3;
+			if(this.currentAccelX> NOISE && 50 < this.positionX){
+				this.positionX -=2;
 			}
 			
-			if(this.currentAccelY< -NOISE){
-				this.positionY+=3;
+			if(this.currentAccelY< -NOISE && DeviceSettings.screenHeight() - 50> this.positionY){
+				this.positionY+=2;
 			}
 			
-			if(this.currentAccelY> NOISE){
-				this.positionY-=3;
+			if(this.currentAccelY> NOISE && 50 < this.positionY){
+				this.positionY-=2;
 			}
 			
 			// Update Player Position

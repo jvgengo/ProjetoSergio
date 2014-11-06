@@ -27,7 +27,7 @@ public class Bottle extends CCSprite {
 	public Bottle(String image) {
 		super(image);
 		
-		int key = new Random().nextInt(3);
+		int key = new Random().nextInt(4);
 		lado = key;
 		
 		switch (key) {

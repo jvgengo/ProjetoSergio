@@ -5,10 +5,13 @@ import org.cocos2d.nodes.CCDirector;
 import org.cocos2d.opengl.CCGLSurfaceView;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import br.com.cotuca.projetosergio.config.DeviceSettings;
 import br.com.cotuca.projetosergio.scenes.TitleScreen;
 
 public class MainActivity extends Activity {
@@ -33,6 +36,12 @@ public class MainActivity extends Activity {
 		//abre tela principal
 		CCScene scene = new TitleScreen().scene();
 		CCDirector.sharedDirector().runWithScene(scene);
+	}
+	
+	
+	private void configSensorManager() {
+		SensorManager sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+		DeviceSettings.setSensorManager(sensorManager);
 	}
 
 }

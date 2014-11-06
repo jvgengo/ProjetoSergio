@@ -27,6 +27,19 @@ public class GameScene extends CCLayer implements BottleEngineDelegate{
 	private List bottlesArray,playersArray;
 	private Player player;
 	
+	/*
+	 * 					 ii	   iiiiiiii
+	 * 					 iiiiiiii	 ii		
+	 * 
+	 * 		iiiiiiiii    iiiiiiiiiiiiii		iiiiiiiiiiiiiii		
+	 * 		   iii	     iii		iii		iii			iii
+	 * 		   iii		 iii		iii		iii			iii
+	 * 		   iii		 iii        iii  	iii			iii
+	 * 		   iii		 iiiiiiiiiiiiii		iii			iii
+	 *  iii	   iii       iii		iii		iii			iii
+	 *  iiiiiiiiii		 iii		iii		iiiiiiiiiiiiiii
+	 */
+	
 	public GameScene() {
 		this.background = new ScreenBackground(Assets.BG_GAME);
 		this.background.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(
@@ -41,6 +54,8 @@ public class GameScene extends CCLayer implements BottleEngineDelegate{
 		this.addChild(this.playerLayer);
 		
 		this.addGameObjects();
+		
+		player.catchAccelerometer();
 	}
 	
 	public static CCScene createGame() {

@@ -4,12 +4,9 @@ import org.cocos2d.actions.interval.CCFadeOut;
 import org.cocos2d.actions.interval.CCScaleBy;
 import org.cocos2d.actions.interval.CCSequence;
 import org.cocos2d.actions.interval.CCSpawn;
-import org.cocos2d.nodes.CCDirector;
 import org.cocos2d.nodes.CCSprite;
-import org.cocos2d.sound.SoundEngine;
 import org.cocos2d.types.CGPoint;
 
-import br.com.cotuca.projetosergio.R;
 import br.com.cotuca.projetosergio.calibrate.AccelerometerDelegate;
 import br.com.cotuca.projetosergio.calibrate.Acelerometro;
 import br.com.cotuca.projetosergio.config.Assets;

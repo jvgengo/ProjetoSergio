@@ -25,20 +25,20 @@ public class Button extends CCLayer{
 	
 	@Override
 	protected void registerWithTouchDispatcher() {
-		CCTouchDispatcher.sharedDispatcher().addTargetedDelegate(this, 0,false);
+		CCTouchDispatcher.sharedDispatcher()
+				.addTargetedDelegate(this, 0, false);
 	}
-	
+
 	@Override
 	public boolean ccTouchesBegan(MotionEvent event) {
 		CGPoint touchLocation = CGPoint.make(event.getX(), event.getY());
 		touchLocation = CCDirector.sharedDirector().convertToGL(touchLocation);
-		this.convertToNodeSpace(touchLocation);
-		
-		//Verifica toque no botao
-		if (CGRect.containsPoint(this.buttonImage.getBoundingBox(), touchLocation)) {
+		touchLocation = this.convertToNodeSpace(touchLocation);
+		// Verifica toque no botão
+		if (CGRect.containsPoint(this.buttonImage.getBoundingBox(),
+				touchLocation)) {
 			delegate.buttonClicked(this);
 		}
-		
 		return true;
 	}
 }

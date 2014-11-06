@@ -14,14 +14,14 @@ public class TitleScreen extends CCLayer{
 	public ScreenBackground background;
 	
 	public TitleScreen() {
-		this.background = new ScreenBackground(Assets.BACKGROUND);
+		this.background = new ScreenBackground(Assets.BG_INICIO);
 		this.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(DeviceSettings.screenWidth() / 2.0f, DeviceSettings.screenHeight() / 2.0f)));
 		this.addChild(this.background);
 		
 		
-//		CCSprite title = new CCSprite().sprite(Assets.LOGO);
-//		title.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(DeviceSettings.screenWidth() / 2, DeviceSettings.screenHeight() - 130)));
-//		this.addChild(title);
+	//	CCSprite title = new CCSprite().sprite(Assets.LOGO);
+	//	title.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(DeviceSettings.screenWidth() / 2, DeviceSettings.screenHeight() - 130)));
+	//	this.addChild(title);
 		
 		MenuButtons menuLayer = new MenuButtons();
 		this.addChild(menuLayer);

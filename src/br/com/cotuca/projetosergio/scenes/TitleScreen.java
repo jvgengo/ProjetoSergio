@@ -2,7 +2,6 @@ package br.com.cotuca.projetosergio.scenes;
 
 import org.cocos2d.layers.CCLayer;
 import org.cocos2d.layers.CCScene;
-import org.cocos2d.nodes.CCSprite;
 import org.cocos2d.types.CGPoint;
 
 import br.com.cotuca.projetosergio.config.Assets;
@@ -20,9 +19,9 @@ public class TitleScreen extends CCLayer{
 		this.addChild(this.background);
 		
 		
-		CCSprite title = new CCSprite().sprite(Assets.LOGO);
-		title.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(DeviceSettings.screenWidth() / 2, DeviceSettings.screenHeight() - 130)));
-		this.addChild(title);
+//		CCSprite title = new CCSprite().sprite(Assets.LOGO);
+//		title.setPosition(DeviceSettings.screenResolution(CGPoint.ccp(DeviceSettings.screenWidth() / 2, DeviceSettings.screenHeight() - 130)));
+//		this.addChild(title);
 		
 		MenuButtons menuLayer = new MenuButtons();
 		this.addChild(menuLayer);

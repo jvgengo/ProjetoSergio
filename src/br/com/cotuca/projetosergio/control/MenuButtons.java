@@ -15,6 +15,8 @@ public class MenuButtons extends CCLayer implements ButtonDelegate{
 	private Button helpButton;
 	
 	public MenuButtons(){
+
+		Log.i("Teste de Método", "criou menu dos botões");
 		this.setIsTouchEnabled(true);
 		
 		this.playButton = new Button(Assets.PLAY);
@@ -47,5 +49,7 @@ public class MenuButtons extends CCLayer implements ButtonDelegate{
 		if (sender.equals(this.helpButton)) {
 			Log.i("TESTE BUTTON", "Button clicked:Help");
 		}
+
+		Log.i("Teste de Método", "entrou no método dos botões");
 	}
 }

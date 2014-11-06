@@ -1,5 +1,6 @@
 package br.com.cotuca.projetosergio.scenes;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import org.cocos2d.types.CGPoint;
 import org.cocos2d.types.CGRect;
 import org.cocos2d.types.CGSize;
 
+import android.util.Log;
 import br.com.cotuca.projetosergio.config.Assets;
 import br.com.cotuca.projetosergio.config.DeviceSettings;
 import br.com.cotuca.projetosergio.engines.BottleEngine;
@@ -67,6 +69,7 @@ public class GameScene extends CCLayer implements BottleEngineDelegate{
 
 	@Override
 	public void createBottle(Bottle bottle) {
+		bottle.setDelegate(this);
 		this.bottlesLayer.addChild(bottle);
 		bottle.start();
 		this.bottlesArray.add(bottle);
@@ -85,7 +88,7 @@ public class GameScene extends CCLayer implements BottleEngineDelegate{
 	@Override
 	public void onEnter() {
 		super.onEnter();
-		this.schedule("checkhits");
+		this.schedule("checkHits");
 		this.startEngines();
 	}
 
@@ -103,9 +106,13 @@ public class GameScene extends CCLayer implements BottleEngineDelegate{
 	}
 	
 	public void playerHit(CCSprite bottle, CCSprite player) {
-		((Bottle) bottle).removeMe();
+		((Bottle) bottle).shooted();
 		((Player) player).explode();
-		CCDirector.sharedDirector().replaceScene(new TitleScreen().scene());
+//		CCDirector.sharedDirector().replaceScene(new TitleScreen().scene());
+	}
+	
+	public void bottleHit(CCSprite bottle) {
+		((Bottle) bottle).shooted();
 	}
 	
 	public void quitGame() {
@@ -146,7 +153,17 @@ public class GameScene extends CCLayer implements BottleEngineDelegate{
 				CGRect rect2 = getBoarders(array2.get(j));
 				
 				if (CGRect.intersects(rect1, rect2)) {
+					Log.d("Colisao", hit);
 					result = true;
+					
+					
+					Method method;
+					try {
+						method = GameScene.class.getMethod(hit, CCSprite.class,CCSprite.class);
+						
+						method.invoke(gameScene, array1.get(i),array2.get(j));
+					} catch (Exception e) {
+					}
 				}
 			}
 		}
@@ -155,7 +172,12 @@ public class GameScene extends CCLayer implements BottleEngineDelegate{
 	
 	public void checkHits(float dt) {
 //		this.checkRadiusHitsOfArray(array1, array2, this, "bottlehit");
-//		this.checkRadiusHitsOfArraySprite(array1, array2, gameScene, "playerHit");
+		this.checkRadiusHitsOfArraySprite(bottlesArray,playersArray , this, "playerHit");
+	}
+
+	@Override
+	public void removeBottle(Bottle bottle) {
+		this.bottlesArray.remove(this);
 	}
 	
 }

@@ -4,16 +4,12 @@ import org.cocos2d.actions.interval.CCFadeOut;
 import org.cocos2d.actions.interval.CCScaleBy;
 import org.cocos2d.actions.interval.CCSequence;
 import org.cocos2d.actions.interval.CCSpawn;
-import org.cocos2d.nodes.CCDirector;
 import org.cocos2d.nodes.CCSprite;
-import org.cocos2d.sound.SoundEngine;
 import org.cocos2d.types.CGPoint;
 
-import br.com.cotuca.projetosergio.R;
 import br.com.cotuca.projetosergio.calibrate.AccelerometerDelegate;
 import br.com.cotuca.projetosergio.calibrate.Acelerometro;
 import br.com.cotuca.projetosergio.config.Assets;
-import br.com.cotuca.projetosergio.config.DeviceSettings;
 import br.com.cotuca.projetosergio.interfaces.BottleEngineDelegate;
 
 
@@ -29,12 +25,15 @@ public class Player extends CCSprite implements AccelerometerDelegate {
 	private float currentAccelX;
 	private float currentAccelY;
 	
+	private int life;
+	
 	private static final double NOISE = 1;
 	
 	public Player() {
 		super(Assets.DRUNK);
 		setPosition(positionX, positionY);
 		this.schedule("update");
+		this.life = 3;
 	}
 
 	public void setDelegate(BottleEngineDelegate delegate) {
@@ -69,6 +68,8 @@ public class Player extends CCSprite implements AccelerometerDelegate {
 		// Run actions!
 		this.runAction(CCSequence.actions(s1));
 
+		--life;
+		
 	}
 
 	public void catchAccelerometer() {
@@ -110,6 +111,10 @@ public class Player extends CCSprite implements AccelerometerDelegate {
 			// Update Player Position
 			this.setPosition(CGPoint.ccp(this.positionX, this.positionY));
 
+	}
+	
+	public int getLife(){
+		return life;
 	}
 	
 }

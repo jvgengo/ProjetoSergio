@@ -83,7 +83,8 @@ public class GameScene extends CCLayer implements BottleEngineDelegate{
 	public void playerHit(CCSprite bottle, CCSprite player) {
 		((Bottle) bottle).removeMe();
 		((Player) player).explode();
-		CCDirector.sharedDirector().replaceScene(new TitleScreen().scene());
+		if (((Player) player).getLife() <= 0)
+		     CCDirector.sharedDirector().replaceScene(new TitleScreen().scene());
 	}
 	
 	public void quitGame() {

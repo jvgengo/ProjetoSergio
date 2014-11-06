@@ -2,13 +2,12 @@ package br.com.cotuca.projetosergio.control;
 
 import org.cocos2d.layers.CCLayer;
 import org.cocos2d.nodes.CCDirector;
-import org.cocos2d.transitions.CCFadeTransition;
 import org.cocos2d.types.CGPoint;
 
 import android.util.Log;
 import br.com.cotuca.projetosergio.config.Assets;
 import br.com.cotuca.projetosergio.config.DeviceSettings;
-import br.com.cotuca.projetosergio.scenes.GameScene;
+import br.com.cotuca.projetosergio.scenes.FinalScreen;
 
 public class MenuButtons extends CCLayer implements ButtonDelegate{
 	private Button playButton;
@@ -43,7 +42,8 @@ public class MenuButtons extends CCLayer implements ButtonDelegate{
 			Log.i("TESTE BUTTON", "Button clicked: Play");
 			System.out.println("Button clicked: Play");
 
-			CCDirector.sharedDirector().replaceScene(CCFadeTransition.transition(1.0f, GameScene.createGame()));
+			CCDirector.sharedDirector().replaceScene(new FinalScreen().scene());
+//			CCDirector.sharedDirector().replaceScene(CCFadeTransition.transition(1.0f, GameScene.createGame()));
 		}
 		
 		if (sender.equals(this.helpButton)) {

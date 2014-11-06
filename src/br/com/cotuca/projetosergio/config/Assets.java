@@ -6,7 +6,7 @@ public class Assets {
 	public static String  BACKGROUND = "background.png";
 	public static String  LOGO 		 = "logo.png";
 	public static String  FINALEND 	 = "finalend.png";
-	public static String  GAMEOVER 	 = "gameover.png";
+	public static String  GAMEOVER 	 = "game_over.png";
 	
 	public static String  PLAY 		 = "play.png";
 	public static String  PAUSE		 = "pause.png";

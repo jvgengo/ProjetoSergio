@@ -36,6 +36,8 @@ public class MainActivity extends Activity {
 		//abre tela principal
 		CCScene scene = new TitleScreen().scene();
 		CCDirector.sharedDirector().runWithScene(scene);
+		
+		configSensorManager();
 	}
 	
 	

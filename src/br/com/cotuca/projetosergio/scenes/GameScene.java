@@ -24,6 +24,7 @@ import org.cocos2d.nodes.CCDirector;
 import org.cocos2d.nodes.CCSprite;
 import org.cocos2d.types.CGPoint;
 import org.cocos2d.types.CGRect;
+import org.cocos2d.sound.SoundEngine;
 
 import android.view.MotionEvent;
 import br.com.cotuca.projetosergio.config.Assets;
@@ -34,6 +35,7 @@ import br.com.cotuca.projetosergio.interfaces.BottleEngineDelegate;
 import br.com.cotuca.projetosergio.objects.Bottle;
 import br.com.cotuca.projetosergio.objects.Player;
 import br.com.cotuca.projetosergio.screens.ScreenBackground;
+import br.com.cotuca.projetosergio.R;
 
 public class GameScene extends CCLayer implements BottleEngineDelegate {
 
@@ -67,6 +69,8 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 		this.addGameObjects();
 
 		player.catchAccelerometer();
+		
+		SoundEngine.sharedEngine().playSound(CCDirector.sharedDirector().getActivity(), R.raw.musica, true);
 	}
 
 	public static CCScene createGame() {
@@ -159,6 +163,7 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 	@Override
 	public void removeBottle(Bottle bottle) {
 		this.bottlesArray.remove(bottle);
+		SoundEngine.sharedEngine().playEffect(CCDirector.sharedDirector().getActivity(),R.raw.quebra_garrafa);
 	}
 	
 	@Override

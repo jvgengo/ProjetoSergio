@@ -130,19 +130,20 @@ public class Player extends CCSprite implements AccelerometerDelegate {
 			}
 			
 			if(this.currentAccelY < -NOISE && DeviceSettings.screenHeight() - 50 > this.positionY){
-				this.positionY +=this.currentAccelY /1.5;
+				this.positionY += this.currentAccelY /1.5;
 			}
 			
 			if(this.currentAccelY > NOISE && 50 < this.positionY){
 				this.positionY -= this.currentAccelY /1.5;
 			}
 			
-			this.setTexture(CCTextureCache.sharedTextureCache().addImage((String) images.get(act)));
-			if (act < 4) {
-				act++;
-			} else {
-				act = 0;
-			}	
+//			this.setTexture(CCTextureCache.sharedTextureCache().addImage((String) images.get(act)));
+//			
+//			if (act < 4) {
+//				act++;
+//			} else {
+//				act = 0;
+//			}	
 			this.setPosition(CGPoint.ccp(this.positionX, this.positionY));
 
 	}

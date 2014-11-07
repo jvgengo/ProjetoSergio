@@ -61,8 +61,8 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 		this.playerLayer = CCLayer.node();
 		this.addChild(this.playerLayer);
 		
-//		this.scoreLayer = CCLayer.node();
-//		this.addChild(this.scoreLayer);
+		this.scoreLayer = CCLayer.node();
+		this.addChild(this.scoreLayer);
 
 		this.addGameObjects();
 
@@ -91,8 +91,8 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 		this.playerLayer.addChild(this.player);
 		this.playersArray = new ArrayList();
 		this.playersArray.add(this.player);
-//		this.score = new Score();
-//		this.scoreLayer.addChild(score);
+		this.score = new Score();
+		this.scoreLayer.addChild(score);
 
 	}
 
@@ -112,8 +112,6 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 		((Bottle) bottle).shooted();
 		((Player) player).explode();
 
-		// if (((Player) player).getLife() <= 0)
-		end  = true;
 		CCDirector.sharedDirector().replaceScene(new FinalScreen().scene());
 	}
 
@@ -190,7 +188,7 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 		for (int i = 0; i < remove.size(); i++) {
 			Bottle b = (Bottle) remove.get(i);
 			b.shooted();
-//			this.score.increase();
+			this.score.increase();
 		}
 		return true;
 	}

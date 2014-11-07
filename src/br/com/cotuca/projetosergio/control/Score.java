@@ -12,9 +12,9 @@ public class Score extends CCLayer {
 	public Score() {
 		score = 0;
 		
-		this.text = CCBitmapFontAtlas.bitmapFontAtlas(String.valueOf(this.score), "UniSansSemiBold_Nunbers_240.fnt");
-		this.text.setScale((float) 240/240);
-		this.setPosition(DeviceSettings.screenWidth()-50,DeviceSettings.screenHeight()-50);
+		this.text = CCBitmapFontAtlas.bitmapFontAtlas(String.valueOf(this.score), "UniSansSemiBold_Numbers_240.fnt");
+		this.text.setScale((float) 120/240);
+		this.setPosition(DeviceSettings.screenWidth()/2,DeviceSettings.screenHeight()-50);
 		this.addChild(this.text);
 	}
 	

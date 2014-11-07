@@ -69,6 +69,7 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 		this.addGameObjects();
 
 		player.catchAccelerometer();
+		this.preloadCache();
 		
 		SoundEngine.sharedEngine().playSound(CCDirector.sharedDirector().getActivity(), R.raw.musica, true);
 	}
@@ -197,6 +198,11 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 		}
 		return true;
 	}
-
+	
+	private void preloadCache() {
+		//inicializa os sons do jogo para não demorarem qnd forem chamados
+		SoundEngine.sharedEngine().preloadEffect(CCDirector.sharedDirector().getActivity(),R.raw.game_over);
+		SoundEngine.sharedEngine().preloadEffect(CCDirector.sharedDirector().getActivity(),R.raw.quebra_garrafa);
+	}
 
 }

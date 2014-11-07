@@ -1,6 +1,5 @@
 package br.com.cotuca.projetosergio.objects;
 
-import java.util.List;
 import java.util.Random;
 
 import org.cocos2d.actions.instant.CCCallFunc;
@@ -10,11 +9,9 @@ import org.cocos2d.actions.interval.CCSequence;
 import org.cocos2d.actions.interval.CCSpawn;
 import org.cocos2d.nodes.CCSprite;
 import org.cocos2d.types.CGPoint;
-import org.cocos2d.types.CGRect;
 
 import br.com.cotuca.projetosergio.config.DeviceSettings;
 import br.com.cotuca.projetosergio.interfaces.BottleEngineDelegate;
-import br.com.cotuca.projetosergio.scenes.GameScene;
 
 public class Bottle extends CCSprite {
 

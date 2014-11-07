@@ -24,14 +24,11 @@ import org.cocos2d.nodes.CCDirector;
 import org.cocos2d.nodes.CCSprite;
 import org.cocos2d.types.CGPoint;
 import org.cocos2d.types.CGRect;
-import org.cocos2d.types.CGSize;
 
-import android.util.Log;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import br.com.cotuca.projetosergio.config.Assets;
 import br.com.cotuca.projetosergio.config.DeviceSettings;
+import br.com.cotuca.projetosergio.control.Score;
 import br.com.cotuca.projetosergio.engines.BottleEngine;
 import br.com.cotuca.projetosergio.interfaces.BottleEngineDelegate;
 import br.com.cotuca.projetosergio.objects.Bottle;
@@ -45,7 +42,11 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 	private CCLayer bottlesLayer, playerLayer;
 	private List bottlesArray, playersArray;
 	private Player player;
-
+	
+	private CCLayer scoreLayer;
+	private Score score;
+	private boolean end = false;
+	
 	public GameScene() {
 		this.setIsTouchEnabled(true);
 		this.background = new ScreenBackground(Assets.BG_GAME);
@@ -59,6 +60,9 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 
 		this.playerLayer = CCLayer.node();
 		this.addChild(this.playerLayer);
+		
+//		this.scoreLayer = CCLayer.node();
+//		this.addChild(this.scoreLayer);
 
 		this.addGameObjects();
 
@@ -87,6 +91,8 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 		this.playerLayer.addChild(this.player);
 		this.playersArray = new ArrayList();
 		this.playersArray.add(this.player);
+//		this.score = new Score();
+//		this.scoreLayer.addChild(score);
 
 	}
 
@@ -107,6 +113,7 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 		((Player) player).explode();
 
 		// if (((Player) player).getLife() <= 0)
+		end  = true;
 		CCDirector.sharedDirector().replaceScene(new FinalScreen().scene());
 	}
 
@@ -183,8 +190,10 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 		for (int i = 0; i < remove.size(); i++) {
 			Bottle b = (Bottle) remove.get(i);
 			b.shooted();
+//			this.score.increase();
 		}
 		return true;
 	}
+
 
 }

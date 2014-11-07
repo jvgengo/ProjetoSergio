@@ -121,7 +121,9 @@ public class GameScene extends CCLayer implements BottleEngineDelegate {
 	}
 
 	public void quitGame() {
+		SoundEngine.sharedEngine().setSoundVolume(0f);
 		CCDirector.sharedDirector().replaceScene(new TitleScreen().scene());
+		
 	}
 
 	public CGRect getBoarders(CCSprite object) {

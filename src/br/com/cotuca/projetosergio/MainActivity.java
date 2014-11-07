@@ -3,6 +3,7 @@
 import org.cocos2d.layers.CCScene;
 import org.cocos2d.nodes.CCDirector;
 import org.cocos2d.opengl.CCGLSurfaceView;
+import org.cocos2d.sound.SoundEngine;
 
 import android.app.Activity;
 import android.content.Context;
@@ -46,5 +47,18 @@ public class MainActivity extends Activity {
 		SensorManager sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 		DeviceSettings.setSensorManager(sensorManager);
 	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		SoundEngine.sharedEngine().setSoundVolume(0f);
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		SoundEngine.sharedEngine().setSoundVolume(1f);
 
+	}
+	
 }

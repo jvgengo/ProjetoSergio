@@ -110,20 +110,20 @@ public class Player extends CCSprite implements AccelerometerDelegate {
 	public void update(float dt) {
 
 			//fazer primeiro com tudo zero depois colocar essa constant
-			if(this.currentAccelX< -NOISE && DeviceSettings.screenWidth() - 50> this.positionX){
-				this.positionX+=2;
+			if(this.currentAccelX < -NOISE && DeviceSettings.screenWidth() - 50 > this.positionX){
+				this.positionX += this.currentAccelX + 0.5;
 			}
 			
-			if(this.currentAccelX> NOISE && 50 < this.positionX){
-				this.positionX -=2;
+			if(this.currentAccelX > NOISE && 50 < this.positionX){
+				this.positionX -= this.currentAccelX + 0.5;
 			}
 			
-			if(this.currentAccelY< -NOISE && DeviceSettings.screenHeight() - 50> this.positionY){
-				this.positionY+=2;
+			if(this.currentAccelY < -NOISE && DeviceSettings.screenHeight() - 50 > this.positionY){
+				this.positionY +=this.currentAccelY /1.5;
 			}
 			
-			if(this.currentAccelY> NOISE && 50 < this.positionY){
-				this.positionY-=2;
+			if(this.currentAccelY > NOISE && 50 < this.positionY){
+				this.positionY -= this.currentAccelY /1.5;
 			}
 			
 			// Update Player Position

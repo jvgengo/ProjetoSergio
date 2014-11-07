@@ -15,4 +15,9 @@ public class Assets {
 	public static String  HELP  	 = "help.png";
 	public static String  SOUND      = "sound.png";
 	public static String  EXIT		 = "exit.png";
+	
+	public static String A = "A.png";
+	public static String B = "B.png";
+	public static String C = "C.png";
+	public static String D = "D.png";
 }

@@ -1,10 +1,14 @@
 package br.com.cotuca.projetosergio.objects;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.cocos2d.actions.interval.CCFadeOut;
 import org.cocos2d.actions.interval.CCScaleBy;
 import org.cocos2d.actions.interval.CCSequence;
 import org.cocos2d.actions.interval.CCSpawn;
 import org.cocos2d.nodes.CCSprite;
+import org.cocos2d.nodes.CCTextureCache;
 import org.cocos2d.types.CGPoint;
 
 import android.util.Log;
@@ -30,13 +34,20 @@ public class Player extends CCSprite implements AccelerometerDelegate {
 	
 	private int life;
 	
+	private List images = new ArrayList<String>();
+	private int act = 0;
+	
 	private static final double NOISE = 1;
 	
 	public Player() {
-		super(Assets.DRUNK);
+		super(Assets.A);
 		setPosition(positionX, positionY);
 		this.schedule("update");
 		this.life = 3;
+		images.add(Assets.A);
+		images.add(Assets.B);
+		images.add(Assets.C);
+		images.add(Assets.D);
 	}
 
 	public void setDelegate(BottleEngineDelegate delegate) {
@@ -126,7 +137,12 @@ public class Player extends CCSprite implements AccelerometerDelegate {
 				this.positionY -= this.currentAccelY /1.5;
 			}
 			
-			// Update Player Position
+			this.setTexture(CCTextureCache.sharedTextureCache().addImage((String) images.get(act)));
+			if (act < 4) {
+				act++;
+			} else {
+				act = 0;
+			}	
 			this.setPosition(CGPoint.ccp(this.positionX, this.positionY));
 
 	}
